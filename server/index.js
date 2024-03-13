@@ -1,5 +1,6 @@
+
 // samaj apan jb expressk function use kar rahe hai tb hum client se baat kar rahe hai(get/post routings)...
-// aur mongodb ko pehle he connect karliye hai apan...sidha vo particular model k through...jiska structure apan he banate hai...
+// aur mongodb ko connect karliye hai apan (through mongoose)...sidha vo particular model k through...jiska structure apan he banate hai...
 
 import express from "express";
 import mongoose from "mongoose";
@@ -79,6 +80,7 @@ mongoose
     .then(()=>{
         console.log("Successfully connected to mongodb")
         app.listen(PORT,()=>console.log(`Listening at port ${PORT}`)) // it will listen only when connected to mongodb // listen through expressjs
+        // uppar mai deployent link dal dena
     })
     .catch((err)=>{
         console.log(err);
