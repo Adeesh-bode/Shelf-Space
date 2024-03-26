@@ -23,7 +23,7 @@ export default function Home() {
         .get('http://localhost:5555/books')
         .then((response)=>{
           setBooks(response.data.data);
-          console.log(books);
+          // console.log(books);
           setLoading(false);
         })
         .catch((error)=>{

@@ -6,6 +6,9 @@ import CreateBook from './Pages/CreateBook.jsx'
 import DeleteBook from './Pages/DeleteBook.jsx'
 import EditBook from './Pages/EditBook.jsx'
 import ShowBook from './Pages/ShowBook.jsx'
+import Login from './Pages/Login.jsx'
+import SignUp from './Pages/SignUp.jsx'
+
 
 import { AppProvider }from './utils/AppContext.jsx';
 import { SnackbarProvider} from 'notistack';
@@ -14,9 +17,11 @@ import { SnackbarProvider} from 'notistack';
 export default function App() {
   return (
     <AppProvider>
-    <SnackbarProvider className='anchorOriginTopCenter	'>
+    <SnackbarProvider className='anchorOriginTopCenter'>
     <Routes>
       <Route path='/' element={<Home />} exact ></Route>
+      <Route path='/login' element={<Login />} exact ></Route>
+      <Route path='/signup' element={<SignUp />} exact ></Route>
       <Route path='/books/create' element={< CreateBook />} exact ></Route>
       <Route path='/books/details/:id' element={<ShowBook />} exact ></Route>
       <Route path='/books/edit/:id' element={<EditBook />} exact ></Route>
