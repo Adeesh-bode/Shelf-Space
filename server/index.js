@@ -5,7 +5,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-// import { mongoDBURL ,PORT } from "./config.js";
+import { mongoDBURL ,PORT } from "./config.js";
 import { User } from "./models/usermodel.js";
 // import { route } from 
 
@@ -61,7 +61,7 @@ app.post("/users", async (req, res)=>{
 
     } catch (error) {
         console.log(error.message);
-        return res.status(500).send({message:error.message + " Try Other way " });
+        return res.status(500).send({message:error.message + });
     }
 })
 
@@ -76,12 +76,10 @@ app.get("/users", async(req,res)=>{
 })
 
 mongoose
-    .connect("mongodb+srv://genesis:mongodbisgod@mernbookstore.vth0q6q.mongodb.net/?retryWrites=true&w=majority")
-    // .connect(mongoDBURL)
+    .connect(mongoDBURL)
     .then(()=>{
         console.log("Successfully connected to mongodb")
-        app.listen(5555,()=>console.log(`Listening at port 5555`)) // it will listen only when connected to mongodb // listen through expressjs
-        // app.listen(PORT,()=>console.log(`Listening at port ${PORT}`)) // it will listen only when connected to mongodb // listen through expressjs
+        // app.listen(PORT,()=>console.log(`Listening at port ${PORT}`)) // it will listen only when connected to mongodb // listen through expressjs /// cmmented kyuki deployed vercel pe listien methods nhi thoti
         // uppar mai deployent link dal dena
     })
     .catch((err)=>{
