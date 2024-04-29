@@ -12,8 +12,14 @@ import { User } from "./models/usermodel.js";
 const app = express();
 app.use(express.json()); // middleware for parsing request body ( post request jo hai..usko achese se read karta hai.. postman pe error de raha tha)
 
-app.use(cors()); // to fix cors policy error  // used allow all origin by empty paranthesis
-
+ // app.use(cors()); // to fix cors policy error  // used allow all origin by empty paranthesis
+app.use(cors(
+    {
+        origin: [ "https://deploy-mern-1whq.vercel.app"],
+        methods: [ "POST","GET"],
+        credentials: true
+    }
+));
 // Can restrict by setting custom origin 
 
 // app.use(                     ////////////////////////////////// ALLOW ALL ORIGIN WHEN LOCALHOST 3000 not used... nhi toh error dega
