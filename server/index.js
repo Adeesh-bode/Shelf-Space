@@ -5,7 +5,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import { mongoDBURL ,PORT } from "./config.js";
+// import { mongoDBURL ,PORT } from "./config.js";
 import { User } from "./models/usermodel.js";
 // import { route } from 
 
@@ -76,10 +76,12 @@ app.get("/users", async(req,res)=>{
 })
 
 mongoose
-    .connect(mongoDBURL)
+    .connect("mongodb+srv://genesis:mongodbisgod@mernbookstore.vth0q6q.mongodb.net/?retryWrites=true&w=majority")
+    // .connect(mongoDBURL)
     .then(()=>{
         console.log("Successfully connected to mongodb")
-        app.listen(PORT,()=>console.log(`Listening at port ${PORT}`)) // it will listen only when connected to mongodb // listen through expressjs
+        app.listen(5555,()=>console.log(`Listening at port 5555`)) // it will listen only when connected to mongodb // listen through expressjs
+        // app.listen(PORT,()=>console.log(`Listening at port ${PORT}`)) // it will listen only when connected to mongodb // listen through expressjs
         // uppar mai deployent link dal dena
     })
     .catch((err)=>{
