@@ -61,7 +61,7 @@ app.post("/users", async (req, res)=>{
 
     } catch (error) {
         console.log(error.message);
-        return res.status(500).send({message:error.message});
+        return res.status(500).send({message:error.message + " Try Other way " });
     }
 })
 
