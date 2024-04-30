@@ -8,11 +8,16 @@ const app = express();
 
 const corsOptions = {
     origin: 'https://shelf-space-frontend.vercel.app',
-    optionsSuccessStatus: 200
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    optionsSuccessStatus: 200, 
+    allowedHeaders: 'Content-Type, Authorization, Content-Length, X-Requested-With',
+    credentials: true 
 };
 
-app.use(express.json());
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
+
+app.use(express.json());
 
 app.use("/books", booksRoute);
 app.get("/", (req, res) => {
