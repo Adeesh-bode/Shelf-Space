@@ -44,36 +44,36 @@ app.get("/",(req,res)=>{
 /// USER COLLECTION AND GET,POST, put ,delete methods only for practice karo..    ////!!!!!!!!!!!!!! Ab iske liye bhi route banao..auth lao issproject mai..
 
 
-app.post("/users", async (req, res)=>{
-    try {
-        if( !req.body.username || !req.body.password ){
-            return res.status(400).send({ message:"Send all required fields : username , password" });
-        }        
+// app.post("/users", async (req, res)=>{
+//     try {
+//         if( !req.body.username || !req.body.password ){
+//             return res.status(400).send({ message:"Send all required fields : username , password" });
+//         }        
 
-        const newUser = {
-            username: req.body.username,
-            password : req.body.password
-        } 
+//         const newUser = {
+//             username: req.body.username,
+//             password : req.body.password
+//         } 
 
-        const user = await User.create(newUser); // so yaha newUser add hoge return mai updated users ki list mil rahi hai..
+//         const user = await User.create(newUser); // so yaha newUser add hoge return mai updated users ki list mil rahi hai..
 
-        return res.status(201).send(user);
+//         return res.status(201).send(user);
 
-    } catch (error) {
-        console.log(error.message);
-        return res.status(500).send({message:error.message + });
-    }
-})
+//     } catch (error) {
+//         console.log(error.message);
+//         return res.status(500).send({message:error.message + });
+//     }
+// })
 
-app.get("/users", async(req,res)=>{
-    try {
-        const users = await User.find({});
-        return res.status(201).send(users); 
-    } catch (error) {
-        console.log(error.message);
-        return res.status(500).send({message: error.message});
-    }
-})
+// app.get("/users", async(req,res)=>{
+//     try {
+//         const users = await User.find({});
+//         return res.status(201).send(users); 
+//     } catch (error) {
+//         console.log(error.message);
+//         return res.status(500).send({message: error.message});
+//     }
+// })
 
 mongoose
     .connect(mongoDBURL)
