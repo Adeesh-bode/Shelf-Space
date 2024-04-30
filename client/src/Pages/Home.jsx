@@ -20,7 +20,7 @@ export default function Home() {
     useEffect(()=>{
       setLoading(true);
       axios
-        .get('http://localhost:5555/books')
+        .get('https://shelf-space-backend.vercel.app/books')
         .then((response)=>{
           setBooks(response.data.data);
           console.log(books);
