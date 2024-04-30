@@ -35,7 +35,7 @@ export default function EditBook() {
     console.log(editBook);
     
     await axios
-      .put(`http://localhost:5555/books/${id}`,editBook)
+      .put(`https://shelf-space-backend.vercel.app/books/${id}`,editBook)
       .then((respoonse)=>{
         console.log(respoonse);
         console.log("Success");
@@ -56,7 +56,7 @@ export default function EditBook() {
   useEffect(()=>{
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`https://shelf-space-backend.vercel.app/books/${id}`)
       .then((response)=>{
         setBook(response.data);
         // console.log(book);
