@@ -6,13 +6,13 @@ import booksRoute from "./routes/booksRoute.js";
 
 const app = express();
 
-app.use(express.json());
-// app.use(cors());
 const corsOptions = {
-    origin: 'https://shelf-space-frontend.vercel.app', 
-    optionsSuccessStatus: 200 
+    origin: 'https://shelf-space-frontend.vercel.app',
+    optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions)); 
+
+app.use(express.json());
+app.use(cors(corsOptions));
 
 app.use("/books", booksRoute);
 app.get("/", (req, res) => {
