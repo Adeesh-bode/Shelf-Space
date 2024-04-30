@@ -15,7 +15,7 @@ export default function DeleteBook() {
   const handleSubmit = async()=>{
 
       await axios.
-        delete(`http://localhost:5555/books/${id}`)
+        delete(`https://shelf-space-backend.vercel.app/books/${id}`)
         .then((response)=>{
           console.log('Sucessfully Deleted');
           navigate(-1);
