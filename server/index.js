@@ -6,7 +6,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { mongoDBURL ,PORT } from "./config.js";
-import { User } from "./models/usermodel.js";
+// import { User } from "./models/usermodel.js";
 // import { route } from 
 
 const app = express();
