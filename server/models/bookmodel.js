@@ -23,6 +23,6 @@ const bookSchema = mongoose.Schema(
 
 // module.exports = mongoose.model("book", )
 
-export const Book = mongoose.model("book", bookSchema);   // cat will become the name of  collection in test database
+export const Book = mongoose.model("book", bookSchema);   // book will become the name of  collection in test database in mongodb
 // ab iska route(get/post) banana in server file isko import karke..
 
