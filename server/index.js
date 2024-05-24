@@ -30,6 +30,7 @@ mongoose.connect(mongoDBURL, {
 })
 .then(() => {
     console.log("Successfully connected to MongoDB");
+    // yaha server.listen part is removed as it is deployed
 })
 .catch(err => {
     console.error("MongoDB connection error:", err);
