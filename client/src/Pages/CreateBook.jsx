@@ -33,6 +33,7 @@ export default function CreateBook() {
     console.log(submitBook);
     
     await axios
+      // always create endpoint routing link by backendurl/api/purpose
       .post("https://shelf-space-backend.vercel.app/books",submitBook)  // yaha badme mai jaha backend deploy kiya hai vaha ka address dalna
       .then((respoonse)=>{
         console.log(respoonse);
