@@ -22,13 +22,8 @@ npm run dev ( for both client & server )
 
 👤 **Adesh Bode**
 
-* Website: https://www.linkedin.com/in/adesh-bode-055930256
 * Github: [@Adeesh-bode](https://github.com/Adeesh-bode)
-* LinkedIn: [@Adesh Bode](https://linkedin.com/in/Adesh Bode)
-
+* LinkedIn: [ https://www.linkedin.com/in/adesh-bode-055930256 ]
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
