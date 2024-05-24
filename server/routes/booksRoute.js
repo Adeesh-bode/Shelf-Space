@@ -8,6 +8,7 @@ const router  = express.Router();
 /// now create its middleware in sever file  and specify default routing prefix  to "/books" and remove /books from here belows...
 
 //route to save a new 
+// below the async function should be modulated in new folder named controller - there actually mongodb and backend connect by mongoose and express
 router.post('/',async(req,res)=>{  // yeh jo req hai ye iss case mai post request hai client side se
     try {
         if( !req.body.title || !req.body.author || !req.body.publishYear ){
