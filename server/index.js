@@ -1,40 +1,33 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import { mongoDBURL, PORT } from "./config.js";
-import booksRoute from "./routes/booksRoute.js";
-
+const express = require('express')
 const app = express();
+const db = require('./db');
+require('dotenv').config();
 
-const corsOptions = {
-    origin: 'https://shelf-space-frontend.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    optionsSuccessStatus: 200, 
-    allowedHeaders: 'Content-Type, Authorization, Content-Length, X-Requested-With',
-    credentials: true 
-};
+const mongoose = require('mongoose');
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); 
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); // req.body
+const PORT = process.env.PORT;
 
-app.use(express.json());
+// Import the router files
+const userRoutes = require('./routes/userRoutes');
+const candidateRoutes = require('./routes/candidateRoutes');
 
-app.use("/books", booksRoute);
-app.get("/", (req, res) => {
-    res.status(200).send('Welcome to MERN Stack Adesh...');
-});
+// Use the routers
+app.use('/user', userRoutes);
+app.use('/candidate', candidateRoutes);
 
-mongoose.connect(mongoDBURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose
+    .connect(process.env.mongodbUrl,{
+        newUrlParser:true,
+        useUnifiedTopology:true,
+    })
+    .then(()=>{
+        console.log("Successfully connected:");
+    })
+    .catch((error)=>{
+        console.log("Some Error Occured:",error);
+    });
+app.listen(process.env.PORT, ()=>{
+    console.log('listening on port:',PORT);
 })
-.then(() => {
-    console.log("Successfully connected to MongoDB");
-    // yaha server.listen part is removed as it is deployed
-})
-.catch(err => {
-    console.error("MongoDB connection error:", err);
-    process.exit(1);
-});
-
-export default app;
