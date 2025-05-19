@@ -8,7 +8,9 @@ import booksRoute from "./routes/booksRoute.js";
 const app = express();
 
 const corsOptions = {
-    origin: 'https://shelf-space-frontend.vercel.app',
+    origin: '*',
+    // origin: 'http://localhost:5173',
+    // origin: 'https://shelf-space-frontend.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 200, 
     allowedHeaders: 'Content-Type, Authorization, Content-Length, X-Requested-With',
@@ -32,6 +34,9 @@ mongoose.connect(mongoDBURL, {
 .then(() => {
     console.log("Successfully connected to MongoDB");
     // yaha server.listen part is removed as it is deployed
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
 })
 .catch(err => {
     console.error("MongoDB connection error:", err);
