@@ -4,7 +4,7 @@ name: Deploy on EC2 CI
 on:
   push:
     branches:
-      - dev2
+      - main
 
 jobs:
   deploy:
