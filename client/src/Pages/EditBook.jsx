@@ -5,6 +5,7 @@ import { useSnackbar } from 'notistack';
 
 import axios from 'axios';
 import Spinner from '../Components/Spinner';
+import { BACKEND_URL } from '../../lib/constants/config';
 
 export default function EditBook() {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -33,9 +34,10 @@ export default function EditBook() {
     }
 
     console.log(editBook);
-    
+    const url = BACKEND_URL + '/books/'+ id;
+    console.log(url);
     await axios
-      .put(`https://shelf-space-backend.vercel.app/books/${id}`,editBook)
+      .put(url,editBook)
       .then((respoonse)=>{
         console.log(respoonse);
         console.log("Success");

@@ -4,6 +4,7 @@ import { useSnackbar } from 'notistack';
 import axios from 'axios';
 import Structure from "../Components/Structure";
 import { useParams, useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../../lib/constants/config';
 
 
 export default function DeleteBook() {
@@ -13,9 +14,10 @@ export default function DeleteBook() {
   const navigate = useNavigate();
 
   const handleSubmit = async()=>{
-
+      const url = BACKEND_URL + '/books/' + id;
+      console.log(url);
       await axios.
-        delete(`https://shelf-space-backend.vercel.app/books/${id}`)
+        delete(url)
         .then((response)=>{
           console.log('Sucessfully Deleted');
           navigate(-1);

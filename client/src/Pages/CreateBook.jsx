@@ -4,6 +4,7 @@ import axios from 'axios';
 import  Structure  from '../Components/Structure'
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import { BACKEND_URL } from '../../lib/constants/config';
 
 
 export default function CreateBook() {
@@ -31,10 +32,11 @@ export default function CreateBook() {
     }
 
     console.log(submitBook);
-    
+    const url = BACKEND_URL + '/books';
+    console.log(url);
     await axios
       // always create endpoint routing link by backendurl/api/purpose
-      .post("http://localhost:5555/books",submitBook)  // yaha badme mai jaha backend deploy kiya hai vaha ka address dalna
+      .post(url,submitBook)  // yaha badme mai jaha backend deploy kiya hai vaha ka address dalna
       // .post("https://shelf-space-backend.vercel.app/books",submitBook)  // yaha badme mai jaha backend deploy kiya hai vaha ka address dalna
       .then((respoonse)=>{
         console.log(respoonse);

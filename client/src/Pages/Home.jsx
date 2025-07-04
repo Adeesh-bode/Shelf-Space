@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 
 import Spinner from '../Components/Spinner'
@@ -11,6 +11,7 @@ import Tabular from '../Components/Tabular';
 
 
 import AppContext from '../utils/AppContext';
+import { BACKEND_URL } from '../../lib/constants/config'
 
 export default function Home() {
   const [ books, setBooks] = useState([]);
@@ -19,9 +20,10 @@ export default function Home() {
   const { tabular , setTabular } = useContext(AppContext);
     useEffect(()=>{
       setLoading(true);
+      const url = BACKEND_URL + '/books';
+      console.log(url);
       axios
-        .get('http://localhost:5555/books')
-        // .get('https://shelf-space-backend.vercel.app/books')
+        .get(url)
         .then((response)=>{
           setBooks(response.data.data);
           console.log(books);

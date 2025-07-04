@@ -2,12 +2,12 @@ import React , { useContext , useEffect  , useState }from 'react'
 import { MdMenuBook } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
-import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 //////// Utilise card component to give rise to modal ( just desriptn he toh banana hai)
 
 import AppContext from '../utils/AppContext';
+import { BACKEND_URL } from '../../lib/constants/config';
 
 export default function BookModal({ id ,set }) {
 //   const { id } = useParams();
@@ -24,8 +24,10 @@ export default function BookModal({ id ,set }) {
 
   useEffect(()=>{
     // setLoading(true);
+    const url = BACKEND_URL + '/books/' + id;
+    console.log(url);
     axios
-      .get(`https://shelf-space-backend.vercel.app/books/${id}`)
+      .get(url)
       .then((response)=>{
         setBook(response.data);
         // console.log(book);

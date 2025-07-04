@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Spinner from '../Components/Spinner';
 import Structure from '../Components/Structure'; 
 import { useParams, Link } from 'react-router-dom'
@@ -12,9 +12,10 @@ export default function ShowBook() {
 
   useEffect(()=>{
     setLoading(true);
+    const url = import.meta.env.VITE_BACKENDURL+ '/books/'+ id;
+    console.log(url);
     axios
-      .get(`http://localhost:5555/books/${id}`)
-      // .get(`https://shelf-space-backend.vercel.app/books/${id}`)
+      .get(url)
       .then((response)=>{
         setBook(response.data);
         

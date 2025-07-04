@@ -1,3 +1,4 @@
 # Ignores even from subdirectory
 **/node_modules/
-**/.env
+# ignore all .env file even .env.local , .env.development , .env.production
+**/.env*
