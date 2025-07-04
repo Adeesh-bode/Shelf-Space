@@ -1,0 +1,49 @@
+# TODO : Use github action to deploy on ec2 server // currently very crude approach
+name: Deploy on EC2 CI
+
+on:
+  push:
+    branches:
+      - dev2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh  
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy on EC2
+        run: |
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+
+            cd /home/ubuntu
+            if [ ! -d "Shelf-Space" ]; then
+              git clone https://github.com/Adeesh-bode/Shelf-Space.git Shelf-Space
+            else
+              cd Shelf-Space
+              git fetch origin
+              git reset --hard origin/main
+            fi
+
+            cd /home/ubuntu/Shelf-Space/server
+            npm install
+
+            # Install pm2 if not already installed
+            if ! command -v pm2 &> /dev/null; then
+              sudo npm install -g pm2
+            fi
+
+            # Restart app with pm2
+            pm2 delete shelfspace-app || true
+            pm2 start index.js --name shelfspace-app
+
+            pm2 save
+            pm2 startup | grep sudo | bash
+
+          EOF
