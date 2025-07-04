@@ -21,8 +21,22 @@ jobs:
       - name: Deploy on EC2
         run: |
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            set -e  # Fail on error
+
+            # Install Node.js (if not installed)
+            if ! command -v node &> /dev/null; then
+              curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+
+            # Install PM2 globally (if not installed)
+            if ! command -v pm2 &> /dev/null; then
+              sudo npm install -g pm2
+            fi
 
             cd /home/ubuntu
+
+            # Clone or update repo
             if [ ! -d "Shelf-Space" ]; then
               git clone https://github.com/Adeesh-bode/Shelf-Space.git Shelf-Space
             else
@@ -34,15 +48,9 @@ jobs:
             cd /home/ubuntu/Shelf-Space/server
             npm install
 
-            # Install pm2 if not already installed
-            if ! command -v pm2 &> /dev/null; then
-              sudo npm install -g pm2
-            fi
-
             # Restart app with pm2
             pm2 delete shelfspace-app || true
             pm2 start index.js --name shelfspace-app
-
             pm2 save
             pm2 startup | grep sudo | bash
 
