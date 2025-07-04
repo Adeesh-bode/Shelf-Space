@@ -8,9 +8,7 @@ import booksRoute from "./routes/booksRoute.js";
 const app = express();
 
 const corsOptions = {
-    origin: '*',
-    // origin: 'http://localhost:5173',
-    // origin: 'https://shelf-space-frontend.vercel.app',
+  origin: ['https://shelfspace.adesh.tech', 'http://localhost:5173'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 200, 
     allowedHeaders: 'Content-Type, Authorization, Content-Length, X-Requested-With',
