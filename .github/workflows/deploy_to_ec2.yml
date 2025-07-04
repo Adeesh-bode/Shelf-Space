@@ -23,7 +23,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PORT: ${{ secrets.PORT }}
         run: |
-          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << EOF
             set -e  # Fail on error
 
             # Install Node.js (if not installed)
@@ -50,6 +50,10 @@ jobs:
 
             cd /home/ubuntu/Shelf-Space/server
             npm install
+
+            # Create .env file
+            echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
+            echo "PORT=${{ secrets.PORT }}" >> .env
 
             # Restart app with pm2
             pm2 delete shelfspace-app || true
