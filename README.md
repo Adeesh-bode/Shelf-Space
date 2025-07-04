@@ -4,7 +4,7 @@
 
 > Online Book management portal for libraries, shopowners , institutes
 
-### ✨ [Demo](https://shelf-space-frontend.vercel.app)
+### ✨ [Demo](https://shelfspace.adesh.tech)
 
 ## Install
 
