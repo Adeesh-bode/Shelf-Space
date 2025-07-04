@@ -1,3 +1,5 @@
-export const  PORT = 5555;
+import dotenv from 'dotenv';
+dotenv.config();
 
-export const mongoDBURL="mongodb+srv://genesis:mongodbisgod@mernbookstore.vth0q6q.mongodb.net/?retryWrites=true&w=majority"; /// ye deployed link hai mongodb ki
+export const PORT = process.env.PORT || 5555;
+export const mongoDBURL = process.env.DATABASE_URL;

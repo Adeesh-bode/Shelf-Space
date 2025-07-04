@@ -1,0 +1,3 @@
+# Ignores even from subdirectory
+**/node_modules/
+**/.env
