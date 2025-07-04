@@ -4,6 +4,8 @@ import Structure from '../Components/Structure';
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios';
 
+import { BACKEND_URL } from '../../lib/constants/config';
+
 
 export default function ShowBook() {
   const { id } = useParams();
@@ -12,7 +14,7 @@ export default function ShowBook() {
 
   useEffect(()=>{
     setLoading(true);
-    const url = import.meta.env.VITE_BACKENDURL+ '/books/'+ id;
+    const url = BACKEND_URL + '/books/'+ id;
     console.log(url);
     axios
       .get(url)

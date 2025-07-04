@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Structure from '../Components/Structure'
 import { useParams , useNavigate  } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -8,7 +8,7 @@ import Spinner from '../Components/Spinner';
 import { BACKEND_URL } from '../../lib/constants/config';
 
 export default function EditBook() {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar} = useSnackbar();
   // const [ status , setStatus ] = useState(false);
   const  { id } = useParams();
   const [book, setBook] = useState({ 

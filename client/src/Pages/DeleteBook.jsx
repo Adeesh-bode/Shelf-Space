@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSnackbar } from 'notistack';
 
 import axios from 'axios';
@@ -8,7 +7,7 @@ import { BACKEND_URL } from '../../lib/constants/config';
 
 
 export default function DeleteBook() {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,6 +18,7 @@ export default function DeleteBook() {
       await axios.
         delete(url)
         .then((response)=>{
+          console.log(response);
           console.log('Sucessfully Deleted');
           navigate(-1);
           enqueueSnackbar('Book Successful Deleted ',{

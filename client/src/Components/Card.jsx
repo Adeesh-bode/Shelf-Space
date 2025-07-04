@@ -2,11 +2,11 @@ import { MdMenuBook } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import Operators from '../Components/Operators'
 
-import React, { useState, useContext } from 'react';
+import { useContext } from 'react';
 import AppContext from "../utils/AppContext";
 
 
-export default function Card( { book  }) {
+export default function Card( { book } ) {
   const { showModal, setShowModal } = useContext(AppContext);
   return (
     <div className='border border-white p-2 md:p-3 flex flex-col justify-start items-start gap-2 md:gap-3 w-5/6 md:w-1/4'>

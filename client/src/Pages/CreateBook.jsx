@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 import  Structure  from '../Components/Structure'
@@ -8,7 +8,7 @@ import { BACKEND_URL } from '../../lib/constants/config';
 
 
 export default function CreateBook() {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [ book , setBook] = useState({
     "title" :"",
     "author":"",
