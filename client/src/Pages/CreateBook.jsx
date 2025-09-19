@@ -59,7 +59,7 @@ export default function CreateBook() {
       <Structure heading='Create Book' />
 
       <form className='w-fit flex flex-col justify-between items-center gap-4 md:gap-6 p-6 md:p-10 border border-sky-400' onSubmit={(e)=>handleSubmit(e)} >
-          <h2>Enter Details of Book</h2>
+          <h2>Enter Details of the Book</h2>
           <div className="form flex flex-col justify-between items-center gap-2 md:gap-4">
           <input type='text' placeholder='Title of Book'  className='w-full px-2 py-1 text-left text-white border-white' name='title' onChange={(e)=>handleChange(e)}></input>
           <input type='text' placeholder='Author'  className='w-full px-2 py-1 text-left text-white border-white' name='author' onChange={(e)=>handleChange(e)}></input>
